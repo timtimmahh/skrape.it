@@ -49,11 +49,11 @@ allprojects {
         explicitApi = ExplicitApiMode.Strict
     }
 
-    java {
+    /*java {
         toolchain {
             languageVersion.set(JavaLanguageVersion.of(8))
         }
-    }
+    }*/
 }
 
 subprojects {

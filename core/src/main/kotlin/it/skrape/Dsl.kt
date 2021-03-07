@@ -1,8 +1,13 @@
 package it.skrape
 
+import it.skrape.core.AsyncScraper
 import it.skrape.core.Scraper
+import it.skrape.core.fetcher.AsyncFetcher
 import it.skrape.core.fetcher.Fetcher
 import it.skrape.core.fetcher.Result
+import kotlinx.coroutines.Deferred
+import kotlinx.coroutines.GlobalScope
+import kotlinx.coroutines.async
 import kotlin.reflect.full.createInstance
 
 
@@ -12,13 +17,32 @@ import kotlin.reflect.full.createInstance
  */
 @SkrapeItDsl
 public fun <R, T> skrape(client: Fetcher<R>, init: Scraper<R>.() -> T): T =
-        Scraper(client).init()
+    Scraper(client).init()
+
+
+/**
+ * Create a http-request config with given parameters or defaults.
+ * @return Result
+ */
+@SkrapeItDsl
+public fun <R, T> skrape(client: AsyncFetcher<R>, init: AsyncScraper<R>.() -> T): T =
+    AsyncScraper(client).init()
 
 /**
  * Read and parse html from a skrape{it} result.
  */
 @SkrapeItDsl
-public fun Scraper<*>.expect(init: Result.() -> Unit) { extract(init) }
+public fun Scraper<*>.expect(init: Result.() -> Unit) {
+    extract(init)
+}
+
+/**
+ * Read and parse html from a skrape{it} result.
+ */
+@SkrapeItDsl
+public fun AsyncScraper<*>.expect(init: Result.() -> Unit) {
+    extract(init)
+}
 
 /**
  * Read and parse html from a skrape{it} result.
@@ -26,7 +50,17 @@ public fun Scraper<*>.expect(init: Result.() -> Unit) { extract(init) }
  */
 @SkrapeItDsl
 public fun <T> Scraper<*>.extract(extractor: Result.() -> T): T =
+    scrape().extractor()
+
+/**
+ * Read and parse html from a skrape{it} result.
+ * @return T
+ */
+@SkrapeItDsl
+public fun <T> AsyncScraper<*>.extract(extractor: Result.() -> T): Deferred<T> =
+    GlobalScope.async {
         scrape().extractor()
+    }
 
 /**
  * Read and parse html from a skrape{it} result.

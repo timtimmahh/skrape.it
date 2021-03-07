@@ -5,3 +5,9 @@ public interface Fetcher<T> {
 
     public val requestBuilder: T
 }
+
+public interface AsyncFetcher<T> {
+    public suspend fun fetch(request: T): Result
+
+    public val requestBuilder: T
+}

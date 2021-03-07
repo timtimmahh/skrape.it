@@ -4,6 +4,7 @@ import io.github.rybalkinsd.kohttp.client.client
 import io.github.rybalkinsd.kohttp.client.defaultHttpClient
 import io.github.rybalkinsd.kohttp.client.fork
 import io.github.rybalkinsd.kohttp.dsl.*
+import io.github.rybalkinsd.kohttp.dsl.async.httpGetAsync
 import io.github.rybalkinsd.kohttp.dsl.context.HttpContext
 import io.github.rybalkinsd.kohttp.ext.url
 import it.skrape.core.fetcher.Method.*
@@ -62,7 +63,7 @@ public object HttpFetcher : Fetcher<Request> {
                 }
             }
         }
-
+        httpGetAsync { }
         return when (request.method) {
             GET -> httpGet(client, context)
             POST -> httpPost(client, context)
