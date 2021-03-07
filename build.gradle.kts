@@ -1,7 +1,7 @@
 @file:Suppress("UNUSED_VARIABLE")
 
 import com.github.benmanes.gradle.versions.updates.DependencyUpdatesTask
-import io.gitlab.arturbosch.detekt.extensions.DetektExtension.Companion.DEFAULT_SRC_DIR_KOTLIN
+//import io.gitlab.arturbosch.detekt.extensions.DetektExtension.Companion.DEFAULT_SRC_DIR_KOTLIN
 import org.gradle.api.tasks.testing.logging.TestLogEvent
 import org.jetbrains.kotlin.gradle.dsl.ExplicitApiMode
 import org.jetbrains.kotlin.gradle.tasks.KotlinCompile
@@ -13,7 +13,7 @@ plugins {
     id("com.github.ben-manes.versions")
     id("se.patrikerdes.use-latest-versions")
     id("com.adarshr.test-logger")
-    id("io.gitlab.arturbosch.detekt")
+//    id("io.gitlab.arturbosch.detekt")
     id("maven-publish")
 //    id("com.vanniktech.maven.publish")
 }
@@ -32,7 +32,7 @@ allprojects {
 //    apply(plugin = "com.vanniktech.maven.publish")
     apply(plugin = "com.github.ben-manes.versions")
     apply(plugin = "se.patrikerdes.use-latest-versions")
-    apply(plugin = "io.gitlab.arturbosch.detekt")
+//    apply(plugin = "io.gitlab.arturbosch.detekt")
     apply(plugin = "com.adarshr.test-logger")
 
     testlogger {
@@ -40,12 +40,12 @@ allprojects {
         slowThreshold = 1000
     }
 
-    detekt {
+    /*detekt {
         toolVersion = "1.9.1"
         autoCorrect = true
         input = files(DEFAULT_SRC_DIR_KOTLIN)
         config = files("$rootDir/config/detekt/detekt.yml")
-    }
+    }*/
 
     kotlin {
         explicitApi = ExplicitApiMode.Strict
@@ -91,7 +91,7 @@ subprojects {
 
         withType<Test> {
             shouldRunAfter(useLatestVersions)
-            dependsOn(detekt)
+//            dependsOn(detekt)
             useJUnitPlatform()
             testLogging {
                 events(TestLogEvent.PASSED, TestLogEvent.SKIPPED, TestLogEvent.FAILED)
