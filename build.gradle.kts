@@ -14,8 +14,8 @@ plugins {
     id("se.patrikerdes.use-latest-versions")
     id("com.adarshr.test-logger")
 //    id("io.gitlab.arturbosch.detekt")
-    id("maven-publish")
-//    id("com.vanniktech.maven.publish")
+//    id("maven-publish")
+    id("com.vanniktech.maven.publish")
 }
 
 allprojects {
@@ -28,8 +28,8 @@ allprojects {
     }
 
     apply(plugin = "org.jetbrains.kotlin.jvm")
-    apply(plugin = "maven-publish")
-//    apply(plugin = "com.vanniktech.maven.publish")
+//    apply(plugin = "maven-publish")
+    apply(plugin = "com.vanniktech.maven.publish")
     apply(plugin = "com.github.ben-manes.versions")
     apply(plugin = "se.patrikerdes.use-latest-versions")
 //    apply(plugin = "io.gitlab.arturbosch.detekt")
