@@ -1,7 +1,7 @@
 @file:Suppress("PropertyName")
 
-val kotlin_version: String by project
-val ktor_version: String by project
+val kotlin_version = "1.4.10"
+val ktor_version = "1.5.2"
 
 plugins {
     jacoco

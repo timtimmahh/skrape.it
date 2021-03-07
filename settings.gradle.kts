@@ -9,7 +9,7 @@ include(
 )
 
 pluginManagement {
-    val kotlin_version: String by settings
+    val kotlin_version = "1.4.10"
     repositories {
         gradlePluginPortal()
     }
