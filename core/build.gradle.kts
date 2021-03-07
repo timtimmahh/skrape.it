@@ -1,6 +1,7 @@
 @file:Suppress("PropertyName")
 
 val kotlin_version: String by project
+val ktor_version: String by project
 
 plugins {
     jacoco
@@ -16,7 +17,6 @@ dependencies {
     val wireMockVersion = "2.27.2"
     val log4jOverSlf4jVersion = "1.7.30"
     val logbackVersion = "1.2.3"
-    val ktorVersion = "1.4.1"
 
     implementation("org.jsoup:jsoup:$jsoupVersion")
     implementation("net.sourceforge.htmlunit:htmlunit:$htmlUnitVersion") {
@@ -30,6 +30,6 @@ dependencies {
     testImplementation("org.testcontainers:junit-jupiter:$testContainersVersion")
     testImplementation("ch.qos.logback:logback-classic:$logbackVersion")
     testImplementation("org.slf4j:log4j-over-slf4j:$log4jOverSlf4jVersion")
-    testImplementation("io.ktor:ktor-client-core:$ktorVersion")
-    testImplementation("io.ktor:ktor-client-apache:$ktorVersion")
+    testImplementation("io.ktor:ktor-client-core:$ktor_version")
+    testImplementation("io.ktor:ktor-client-apache:$ktor_version")
 }

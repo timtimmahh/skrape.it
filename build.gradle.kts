@@ -120,9 +120,9 @@ subprojects {
     }
 }
 
-jacoco {
+/*jacoco {
     toolVersion = "0.8.5"
-}
+}*/
 
 tasks {
     val jacocoTestReport by getting(JacocoReport::class) {
