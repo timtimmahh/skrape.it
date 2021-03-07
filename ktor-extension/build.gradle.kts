@@ -11,7 +11,9 @@ plugins {
 
 dependencies {
 
-    provided(project(":core"))
+//    provided(project(":core"))
+    implementation(project(":core"))
+    testImplementation(project(":core"))
     provided("io.ktor:ktor-server-test-host:$ktor_version")
     provided("io.ktor:ktor-server-netty:$ktor_version")
     provided("io.ktor:ktor-freemarker:$ktor_version")
